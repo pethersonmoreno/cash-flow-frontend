@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/cash-flow-frontend/static/css/main.291b5925.chunk.css",
-    "main.js": "/cash-flow-frontend/static/js/main.a60bfd62.chunk.js",
-    "main.js.map": "/cash-flow-frontend/static/js/main.a60bfd62.chunk.js.map",
+    "main.js": "/cash-flow-frontend/static/js/main.5555db69.chunk.js",
+    "main.js.map": "/cash-flow-frontend/static/js/main.5555db69.chunk.js.map",
     "runtime-main.js": "/cash-flow-frontend/static/js/runtime-main.ee3602d9.js",
     "runtime-main.js.map": "/cash-flow-frontend/static/js/runtime-main.ee3602d9.js.map",
     "static/js/2.5a0eea71.chunk.js": "/cash-flow-frontend/static/js/2.5a0eea71.chunk.js",
     "static/js/2.5a0eea71.chunk.js.map": "/cash-flow-frontend/static/js/2.5a0eea71.chunk.js.map",
     "index.html": "/cash-flow-frontend/index.html",
-    "precache-manifest.752c940c7b8dde338b6c1dca907783e1.js": "/cash-flow-frontend/precache-manifest.752c940c7b8dde338b6c1dca907783e1.js",
+    "precache-manifest.7ce29c2b5ce479202750722ad90b1257.js": "/cash-flow-frontend/precache-manifest.7ce29c2b5ce479202750722ad90b1257.js",
     "service-worker.js": "/cash-flow-frontend/service-worker.js",
     "static/css/main.291b5925.chunk.css.map": "/cash-flow-frontend/static/css/main.291b5925.chunk.css.map"
   },
@@ -16,6 +16,6 @@
     "static/js/runtime-main.ee3602d9.js",
     "static/js/2.5a0eea71.chunk.js",
     "static/css/main.291b5925.chunk.css",
-    "static/js/main.a60bfd62.chunk.js"
+    "static/js/main.5555db69.chunk.js"
   ]
 }
