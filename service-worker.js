@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/cash-flow-frontend/precache-manifest.e6885f84c09753db6b719243b4cff282.js"
+  "/cash-flow-frontend/precache-manifest.725032942b1b16ecc3f5c468ef0b868e.js"
 );
 
 self.addEventListener('message', (event) => {
