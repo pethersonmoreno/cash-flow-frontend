@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "13147fde47cf0659415e3bbfdce542c9",
+    "revision": "815f199cb36d75e39fb9c73095c2ed09",
     "url": "/cash-flow-frontend/index.html"
   },
   {
-    "revision": "6d392ad29e2a4e1bb7bd",
+    "revision": "cb15d924aa7004925264",
     "url": "/cash-flow-frontend/static/css/main.291b5925.chunk.css"
   },
   {
-    "revision": "9035aa1d8eafa65a2c4f",
-    "url": "/cash-flow-frontend/static/js/2.5a0eea71.chunk.js"
+    "revision": "0f9363f21d55c8ab7513",
+    "url": "/cash-flow-frontend/static/js/2.c8b4672f.chunk.js"
   },
   {
-    "revision": "6d392ad29e2a4e1bb7bd",
-    "url": "/cash-flow-frontend/static/js/main.ad531905.chunk.js"
+    "revision": "cb15d924aa7004925264",
+    "url": "/cash-flow-frontend/static/js/main.7233aed8.chunk.js"
   },
   {
     "revision": "f702532c5eef636b7ec6",
