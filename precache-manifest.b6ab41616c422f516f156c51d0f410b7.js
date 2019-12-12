@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0011b58ad81c829bb6b0cadddc361a1c",
+    "revision": "68542f16cae184dc50ae43f373133534",
     "url": "/cash-flow-frontend/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/cash-flow-frontend/static/css/2.b90ce945.chunk.css"
   },
   {
-    "revision": "7c2208bd05eb2918047c",
+    "revision": "fc1cfec72aaffb803c45",
     "url": "/cash-flow-frontend/static/css/main.bd562c9f.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/cash-flow-frontend/static/js/2.c3190965.chunk.js"
   },
   {
-    "revision": "7c2208bd05eb2918047c",
-    "url": "/cash-flow-frontend/static/js/main.619cec96.chunk.js"
+    "revision": "fc1cfec72aaffb803c45",
+    "url": "/cash-flow-frontend/static/js/main.7807bfc9.chunk.js"
   },
   {
     "revision": "f702532c5eef636b7ec6",
