@@ -1,24 +1,25 @@
 {
   "files": {
-    "main.css": "/cash-flow-frontend/static/css/main.de8f0384.chunk.css",
-    "main.js": "/cash-flow-frontend/static/js/main.6ce3b0bc.chunk.js",
-    "main.js.map": "/cash-flow-frontend/static/js/main.6ce3b0bc.chunk.js.map",
-    "runtime-main.js": "/cash-flow-frontend/static/js/runtime-main.ee3602d9.js",
-    "runtime-main.js.map": "/cash-flow-frontend/static/js/runtime-main.ee3602d9.js.map",
+    "main.css": "/cash-flow-frontend/static/css/main.e275e24c.chunk.css",
+    "main.js": "/cash-flow-frontend/static/js/main.d3437a81.chunk.js",
+    "main.js.map": "/cash-flow-frontend/static/js/main.d3437a81.chunk.js.map",
+    "runtime-main.js": "/cash-flow-frontend/static/js/runtime-main.2e543c99.js",
+    "runtime-main.js.map": "/cash-flow-frontend/static/js/runtime-main.2e543c99.js.map",
     "static/css/2.b90ce945.chunk.css": "/cash-flow-frontend/static/css/2.b90ce945.chunk.css",
-    "static/js/2.1c839186.chunk.js": "/cash-flow-frontend/static/js/2.1c839186.chunk.js",
-    "static/js/2.1c839186.chunk.js.map": "/cash-flow-frontend/static/js/2.1c839186.chunk.js.map",
+    "static/js/2.32d2152e.chunk.js": "/cash-flow-frontend/static/js/2.32d2152e.chunk.js",
+    "static/js/2.32d2152e.chunk.js.map": "/cash-flow-frontend/static/js/2.32d2152e.chunk.js.map",
     "index.html": "/cash-flow-frontend/index.html",
-    "precache-manifest.8d0c616615c374b273f2b1b26705a2e5.js": "/cash-flow-frontend/precache-manifest.8d0c616615c374b273f2b1b26705a2e5.js",
+    "precache-manifest.b105f2f75301215058778d88740c7616.js": "/cash-flow-frontend/precache-manifest.b105f2f75301215058778d88740c7616.js",
     "service-worker.js": "/cash-flow-frontend/service-worker.js",
     "static/css/2.b90ce945.chunk.css.map": "/cash-flow-frontend/static/css/2.b90ce945.chunk.css.map",
-    "static/css/main.de8f0384.chunk.css.map": "/cash-flow-frontend/static/css/main.de8f0384.chunk.css.map"
+    "static/css/main.e275e24c.chunk.css.map": "/cash-flow-frontend/static/css/main.e275e24c.chunk.css.map",
+    "static/js/2.32d2152e.chunk.js.LICENSE": "/cash-flow-frontend/static/js/2.32d2152e.chunk.js.LICENSE"
   },
   "entrypoints": [
-    "static/js/runtime-main.ee3602d9.js",
+    "static/js/runtime-main.2e543c99.js",
     "static/css/2.b90ce945.chunk.css",
-    "static/js/2.1c839186.chunk.js",
-    "static/css/main.de8f0384.chunk.css",
-    "static/js/main.6ce3b0bc.chunk.js"
+    "static/js/2.32d2152e.chunk.js",
+    "static/css/main.e275e24c.chunk.css",
+    "static/js/main.d3437a81.chunk.js"
   ]
 }
