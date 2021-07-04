@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Paper } from 'react-md';
-import AutoCompleteField from '../../../../utils/components/AutoCompleteField';
+import SelectField from '../../../../utils/components/SelectField';
 import DateTimePicker from '../../../../utils/components/DateTimePicker';
 import './CashFlowExpenseFormView.scss';
 
@@ -15,7 +14,7 @@ const CashFlowExpenseFormView = ({
   value, onChangeValue,
   save,
 }) => (
-  <Paper className="cash-flow-form">
+  <div className="cf-paper cash-flow-form">
     <h2>
       {edit ? 'Edit' : 'New'}
       {' '}
@@ -27,7 +26,7 @@ const CashFlowExpenseFormView = ({
       selected={dateTime}
       onChange={setDateTime}
     />
-    <AutoCompleteField
+    <SelectField
       id="accountId"
       data={accountsFullList}
       value={accountId}
@@ -37,7 +36,7 @@ const CashFlowExpenseFormView = ({
       label="Account"
       placeholder="Banespa, ..."
     />
-    <AutoCompleteField
+    <SelectField
       id="cashFlowDescriptionId"
       data={cashFlowDescriptionsList}
       value={cashFlowDescriptionId}
@@ -52,8 +51,9 @@ const CashFlowExpenseFormView = ({
     <input placeholder="Value" name="value" type="number" label="Value" value={value} onChange={onChangeValue} />
     <br />
     <br />
-    <Button
-      raised
+    <button
+      type="button"
+      className="cf-btn cf-btn--block cf-btn--text cf-btn--raised"
       onClick={save({
         accountId,
         inOut,
@@ -63,8 +63,8 @@ const CashFlowExpenseFormView = ({
       })}
     >
       {edit ? 'Update' : 'Create'}
-    </Button>
-  </Paper>
+    </button>
+  </div>
 );
 CashFlowExpenseFormView.propTypes = {
   edit: PropTypes.bool.isRequired,

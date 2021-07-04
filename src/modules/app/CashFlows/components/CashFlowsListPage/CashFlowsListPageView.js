@@ -2,17 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ReactDatePicker from 'react-datepicker';
-import {
-  Paper, Button
-} from 'react-md';
 import CashFlowsList from '../CashFlowsList';
 import './CashFlowsListPageView.scss';
-import AutoCompleteField from '../../../../utils/components/AutoCompleteField';
+import SelectField from '../../../../utils/components/SelectField';
 
 const CashFlowsListPageView = ({
   monthDate, setMonthDate,
   cashFlowDescriptionId, setCashFlowDescriptionId,
   cashFlowDescriptionsList,
+  accountId, setAccountId,
+  accountsFullList,
   orderedList,
   addIncome,
   addExpense,
@@ -21,7 +20,7 @@ const CashFlowsListPageView = ({
   showAddMenu, setShowAddMenu,
 
 }) => (
-  <Paper>
+  <div className="cf-paper">
     <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
       <div style={{ marginRight: 10 }}>
       Month:
@@ -33,19 +32,37 @@ const CashFlowsListPageView = ({
           showMonthYearPicker
         />
       </div>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
+      <div style={{ display: 'flex', alignItems: 'center', marginRight: 10 }}>
         <div style={{ marginRight: 3 }}>
         Description:
           {' '}
         </div>
         <div>
-          <AutoCompleteField
+          <SelectField
             id="cashFlowDescriptionId"
-            data={cashFlowDescriptionsList}
+            data={[...(cashFlowDescriptionId ? [{ id: '', name: '--- Remover Seleção ---' }] : []), ...cashFlowDescriptionsList]}
             value={cashFlowDescriptionId}
             setValue={setCashFlowDescriptionId}
             dataLabel="name"
             dataValue="id"
+            label=""
+            placeholder=""
+          />
+        </div>
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div style={{ marginRight: 3 }}>
+        Account:
+          {' '}
+        </div>
+        <div>
+          <SelectField
+            id="accountId"
+            data={[...(cashFlowDescriptionId ? [{ value: '', label: '--- Remover Seleção ---' }] : []), ...accountsFullList]}
+            value={accountId}
+            setValue={setAccountId}
+            dataLabel="label"
+            dataValue="value"
             label=""
             placeholder=""
           />
@@ -58,12 +75,12 @@ const CashFlowsListPageView = ({
     })}
     >
       <div className="addMenu">
-        <Button floating primary onClick={addIncome}>add</Button>
-        <Button floating secondary onClick={addExpense}>add</Button>
+        <button type="button" className="cf-btn cf-btn--icon cf-btn--floating cf-paper cf-paper--2 cf-background--primary cf-btn--block" onClick={addIncome}><i className="material-icons">add</i></button>
+        <button type="button" className="cf-btn cf-btn--icon cf-btn--floating cf-paper cf-paper--2 cf-background--secondary cf-btn--block" onClick={addExpense}><i className="material-icons">add</i></button>
       </div>
-      <Button floating mini onClick={() => setShowAddMenu(!showAddMenu)}>add</Button>
+      <button type="button" className="cf-btn cf-btn--icon cf-btn--floating cf-btn--floating-mini cf-paper cf-paper--2 cf-btn--block" onClick={() => setShowAddMenu(!showAddMenu)}><i className="material-icons">add</i></button>
     </div>
-  </Paper>
+  </div>
 );
 
 CashFlowsListPageView.propTypes = {
@@ -75,10 +92,16 @@ CashFlowsListPageView.propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   })).isRequired,
+  accountId: PropTypes.string,
+  setAccountId: PropTypes.func.isRequired,
+  accountsFullList: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+  })).isRequired,
   orderedList: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     inOut: PropTypes.bool.isRequired,
-    dateTime: PropTypes.instanceOf(Date).isRequired,
+    dateTime: PropTypes.string.isRequired,
     accountId: PropTypes.string.isRequired,
     cashFlowDescriptionId: PropTypes.string.isRequired,
     value: PropTypes.number.isRequired,
@@ -92,6 +115,7 @@ CashFlowsListPageView.propTypes = {
 };
 CashFlowsListPageView.defaultProps = {
   cashFlowDescriptionId: null,
+  accountId: null,
 };
 
 export default CashFlowsListPageView;

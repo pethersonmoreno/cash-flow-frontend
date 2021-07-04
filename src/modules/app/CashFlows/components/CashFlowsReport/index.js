@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDatePicker from 'react-datepicker';
-import moment from 'moment';
-import {
-  Paper, DataTable, TableHeader, TableRow, TableColumn, TableBody
-} from 'react-md';
-import useCashFlowsList from '../../../../utils/hooks/useCashFlowsList';
+import { useDispatch } from 'react-redux';
+import { useCashFlowListMonth, useCashFlowsCurrentMonth } from '../../selectors/selectorsCashFlows';
 import useCashFlowDescriptionsList from '../../../../utils/hooks/useCashFlowDescriptionsList';
 import formatMoneyValue from '../../../../utils/helpers/formatMoneyValue';
+import * as actions from '../../actions/actionsCashFlows';
 import './CashFlowsReport.scss';
 
 const listIgnoreDescriptions = [
@@ -43,84 +41,83 @@ const groupByDescription = list => list
   }, []);
 
 const CashFlowsReport = () => {
-  const [monthDate, setMonthDate] = useState(new Date());
+  const dispatch = useDispatch();
   const [cashFlowDescriptionsList] = useCashFlowDescriptionsList();
-  const [list] = useCashFlowsList();
-  const monthDateString = moment(monthDate).format('YYYY-MM');
+  const monthDate = useCashFlowsCurrentMonth();
+  const list = useCashFlowListMonth(monthDate);
   const listFiltered = list
-    .filter(cashFlow => !listIgnoreDescriptions.find(id => cashFlow.cashFlowDescriptionId === id))
-    .filter(cashFlow => moment(cashFlow.dateTime).format('YYYY-MM') === monthDateString);
+    .filter(cashFlow => !listIgnoreDescriptions.find(id => cashFlow.cashFlowDescriptionId === id));
   const groupedList = groupByDescription(listFiltered);
   const negativeDescriptions = orderListValue(groupedList.filter(group => group.value < 0), false);
   const positiveDescriptions = orderListValue(groupedList.filter(group => group.value >= 0), true);
   return (
-    <Paper>
+    <div className="cf-paper">
       <div>
         Month:
         {' '}
         <ReactDatePicker
-          selected={monthDate}
-          onChange={date => setMonthDate(date)}
+          selected={new Date(`${monthDate}-02`)}
+          onChange={month => dispatch(actions.setCashFlowsCurrentMonth(month))}
           dateFormat="yyyy-MM"
           showMonthYearPicker
         />
       </div>
       <h2>Negative Descriptions</h2>
-      <DataTable plain>
-        <TableHeader>
-          <TableRow>
-            <TableColumn>Description</TableColumn>
-            <TableColumn>Value</TableColumn>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
+      <table className="cf-table">
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
           {negativeDescriptions.map(group => (
-            <TableRow key={group.cashFlowDescriptionId}>
-              <TableColumn>
+            <tr key={group.cashFlowDescriptionId}>
+              <td>
                 {getCashFlowDescription(cashFlowDescriptionsList, group.cashFlowDescriptionId)}
-              </TableColumn>
-              <TableColumn>{formatMoneyValue(group.value)}</TableColumn>
-            </TableRow>
+              </td>
+              <td>{formatMoneyValue(group.value)}</td>
+            </tr>
           ))}
-        </TableBody>
-      </DataTable>
+        </tbody>
+      </table>
       <h2>Positive Descriptions</h2>
-      <DataTable plain>
-        <TableHeader>
-          <TableRow>
-            <TableColumn>Description</TableColumn>
-            <TableColumn>Value</TableColumn>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
+      <table className="cf-table">
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
           {positiveDescriptions.map(group => (
-            <TableRow key={group.cashFlowDescriptionId}>
-              <TableColumn>
+            <tr key={group.cashFlowDescriptionId}>
+              <td>
                 {getCashFlowDescription(cashFlowDescriptionsList, group.cashFlowDescriptionId)}
-              </TableColumn>
-              <TableColumn>{formatMoneyValue(group.value)}</TableColumn>
-            </TableRow>
+              </td>
+              <td>{formatMoneyValue(group.value)}</td>
+            </tr>
           ))}
-        </TableBody>
-      </DataTable>
+        </tbody>
+      </table>
       <h2>Total</h2>
-      <DataTable plain>
-        <TableBody>
-          <TableRow>
-            <TableColumn>Negative</TableColumn>
-            <TableColumn>
+      <table className="cf-table">
+        <tbody>
+          <tr>
+            <td>Negative</td>
+            <td>
               {formatMoneyValue(negativeDescriptions.reduce((sum, group) => sum + group.value, 0))}
-            </TableColumn>
-          </TableRow>
-          <TableRow>
-            <TableColumn>Positive</TableColumn>
-            <TableColumn>
+            </td>
+          </tr>
+          <tr>
+            <td>Positive</td>
+            <td>
               {formatMoneyValue(positiveDescriptions.reduce((sum, group) => sum + group.value, 0))}
-            </TableColumn>
-          </TableRow>
-        </TableBody>
-      </DataTable>
-    </Paper>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   );
 };
 

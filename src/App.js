@@ -1,16 +1,17 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import MainRouter from './modules/router/components/MainRouter';
-import RootRouter from './modules/router/components/RootRouter';
+import { RootRouter } from './modules/router/components';
 import './modules/utils/styles/index.scss';
-import useAuth from './modules/auth/hooks/useAuth';
+import store from './store';
 
-const App = () => {
-  const { loadingAuth } = useAuth();
-  return (
-    <RootRouter basename={process.env.PUBLIC_URL} loading={loadingAuth}>
+
+const App = () => (
+  <Provider store={store}>
+    <RootRouter>
       <MainRouter />
     </RootRouter>
-  );
-};
+  </Provider>
+);
 
 export default App;

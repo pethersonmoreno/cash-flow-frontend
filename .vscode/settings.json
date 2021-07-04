@@ -1,23 +1,10 @@
 {
-  "eslint.autoFixOnSave": true,
   "eslint.enable": true,
   "eslint.validate": [
-    {
-      "language": "javascript",
-      "autoFix": true
-    },
-    {
-      "language": "javascriptreact",
-      "autoFix": true
-    },
-    {
-      "language": "typescript",
-      "autoFix": true
-    },
-    {
-      "language": "typescriptreact",
-      "autoFix": true
-    }
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
   ],
   "[javascript]": {
     "editor.defaultFormatter": null,
@@ -27,5 +14,8 @@
     "editor.defaultFormatter": null,
     "editor.formatOnSave": false
   },
-  "jest.autoEnable": false
+  "jest.autoEnable": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }

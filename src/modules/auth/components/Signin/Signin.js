@@ -1,16 +1,20 @@
 import React from 'react';
-import { Paper } from 'react-md';
+import { useDispatch } from 'react-redux';
 import ButtonSigninWith from '../ButtonSigninWith';
 import googleIcon from './googleIcon.png';
 import './Signin.scss';
 import Box from '../../../utils/components/Box';
-import { signin } from '../../actions/auth';
+import {
+  signinGoogleWithRedirect
+} from '../../../utils/api/auth';
+import * as actions from '../../actions/actionsAuth';
 
-const Signin = () =>
-  (
+const Signin = () => {
+  const dispatch = useDispatch();
+  return (
     <Box center fill>
-      <Paper
-        className="signin"
+      <div
+        className="cf-paper signin"
         zDepth={0}
         raiseOnHover
       >
@@ -19,12 +23,16 @@ const Signin = () =>
           imageSrc={googleIcon}
           alt="Google"
           title="Sign in with Google"
-          onClick={signin}
+          onClick={() => {
+            dispatch(actions.startAuthLoading());
+            signinGoogleWithRedirect();
+          }}
         >
           Continue with Google
         </ButtonSigninWith>
-      </Paper>
+      </div>
     </Box>
   );
+};
 
 export default Signin;

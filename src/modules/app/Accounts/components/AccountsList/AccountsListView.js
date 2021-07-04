@@ -1,46 +1,46 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Paper, Button, DataTable, TableHeader, TableRow, TableColumn, TableBody
-} from 'react-md';
 
 const AccountsListView = ({
   add, edit, remove, list
 }) => (
-  <Paper>
-    <Button icon onClick={add}>add_circle</Button>
-    <DataTable plain>
-      <TableHeader>
-        <TableRow>
-          <TableColumn>Action</TableColumn>
-          <TableColumn>Description</TableColumn>
-          <TableColumn>Current Value</TableColumn>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
+  <div className="cf-paper">
+    <button type="button" className="cf-btn cf-btn--block cf-btn--icon" onClick={add}><i className="material-icons">add_circle</i></button>
+    <table className="cf-table">
+      <thead>
+        <tr>
+          <th>Action</th>
+          <th>Description</th>
+          <th>Current Value</th>
+        </tr>
+      </thead>
+      <tbody>
         {list.map(account => (
-          <TableRow key={account.id}>
-            <TableColumn>
-              <Button
-                icon
+          <tr key={account.id}>
+            <td>
+              <button
+                type="button"
+                className="cf-btn cf-btn--block cf-btn--icon"
                 onClick={edit(account)}
               >
-                  edit
-              </Button>
-              <Button
-                icon
+                <i className="material-icons">edit</i>
+              </button>
+
+              <button
+                type="button"
+                className="cf-btn cf-btn--block cf-btn--icon"
                 onClick={remove(account)}
               >
-                  restore_from_trash
-              </Button>
-            </TableColumn>
-            <TableColumn>{account.description}</TableColumn>
-            <TableColumn>{account.currentValue}</TableColumn>
-          </TableRow>
+                <i className="material-icons">restore_from_trash</i>
+              </button>
+            </td>
+            <td>{account.description}</td>
+            <td>{account.currentValue}</td>
+          </tr>
         ))}
-      </TableBody>
-    </DataTable>
-  </Paper>
+      </tbody>
+    </table>
+  </div>
 );
 
 AccountsListView.propTypes = {

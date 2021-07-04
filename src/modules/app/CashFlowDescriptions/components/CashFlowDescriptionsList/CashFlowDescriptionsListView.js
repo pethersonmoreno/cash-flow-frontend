@@ -1,44 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Paper, Button, DataTable, TableHeader, TableRow, TableColumn, TableBody
-} from 'react-md';
 
 const CashFlowDescriptionsListView = ({
   add, edit, remove, list
 }) => (
-  <Paper>
-    <Button icon onClick={add}>add_circle</Button>
-    <DataTable plain>
-      <TableHeader>
-        <TableRow>
-          <TableColumn>Action</TableColumn>
-          <TableColumn>Name</TableColumn>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
+  <div className="cf-paper">
+    <button type="button" className="cf-btn cf-btn--block cf-btn--icon" onClick={add}><i className="material-icons">add_circle</i></button>
+    <table className="cf-table">
+      <thead>
+        <tr>
+          <th>Action</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
         {list.map(cashFlowDescription => (
-          <TableRow key={cashFlowDescription.id}>
-            <TableColumn>
-              <Button
-                icon
+          <tr key={cashFlowDescription.id}>
+            <td>
+              <button
+                type="button"
+                className="cf-btn cf-btn--block cf-btn--icon"
                 onClick={edit(cashFlowDescription)}
               >
-                  edit
-              </Button>
-              <Button
-                icon
+                <i className="material-icons">edit</i>
+              </button>
+
+              <button
+                type="button"
+                className="cf-btn cf-btn--block cf-btn--icon"
                 onClick={remove(cashFlowDescription)}
               >
-                  restore_from_trash
-              </Button>
-            </TableColumn>
-            <TableColumn>{cashFlowDescription.name}</TableColumn>
-          </TableRow>
+                <i className="material-icons">restore_from_trash</i>
+              </button>
+            </td>
+            <td>{cashFlowDescription.name}</td>
+          </tr>
         ))}
-      </TableBody>
-    </DataTable>
-  </Paper>
+      </tbody>
+    </table>
+  </div>
 );
 
 CashFlowDescriptionsListView.propTypes = {

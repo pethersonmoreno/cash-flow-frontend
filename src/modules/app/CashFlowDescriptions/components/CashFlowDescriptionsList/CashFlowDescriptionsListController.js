@@ -1,20 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getState } from '../../../../auth/hooks/useAuthState';
+import { useDispatch } from 'react-redux';
 import api from '../../../../utils/api/cashFlowDescriptions';
 import CashFlowDescriptionsListView from './CashFlowDescriptionsListView';
-import useCashFlowDescriptionsList from '../../../../utils/hooks/useCashFlowDescriptionsList';
 import getMessageFromError from '../../../../utils/helpers/getMessageFromError';
+import { useCashFlowDescriptionsList } from '../../selectors/selectorsCashFlowDescriptions';
+import { useToken } from '../../../../auth/selectors/selectorsAuth';
+import * as actions from '../../actions/actionsCashFlowDescriptions';
+
 
 const CashFlowDescriptionsListController = ({ match, history }) => {
-  const [list] = useCashFlowDescriptionsList();
+  const dispatch = useDispatch();
+  const token = useToken();
+  const list = useCashFlowDescriptionsList();
   const goAdd = () => { history.push(`${match.path}/new`); };
   const goEdit = registry => () => { history.push(`${match.path}/edit/${registry.id}`); };
   const deleteRegistry = registry => async () => {
-    const { token } = getState();
     try {
       await api.delete(token, registry.id);
+      dispatch(actions.removeDescription(registry.id));
     } catch (error) {
+      // eslint-disable-next-line no-alert
       alert(getMessageFromError(error));
     }
   };

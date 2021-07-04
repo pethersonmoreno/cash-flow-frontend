@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { auth as authApi } from '../../../api';
+import { auth as authApi } from '../api';
 
 let listenChangesCallback = null;
 const startListenAuthChanges = () => {
@@ -7,7 +7,6 @@ const startListenAuthChanges = () => {
     return new Promise((resolve, reject) => {
       let executedBefore = false;
       listenChangesCallback = user => {
-        console.log('auth changes');
         if (!executedBefore) {
           executedBefore = true;
           resolve(user);

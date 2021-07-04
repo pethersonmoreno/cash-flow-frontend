@@ -1,29 +1,20 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import AppCoverView from './AppCoverView';
-import useAppState from '../../hooks/useAppState';
-import { toggleMenu } from '../../actions';
-import { unsubscribePeopleList } from '../../../utils/hooks/usePeopleList';
-import { unsubscribeAccountsList } from '../../../utils/hooks/useAccountsList';
-import { unsubscribeCashFlowDescriptionsList } from '../../../utils/hooks/useCashFlowDescriptionsList';
-import { unsubscribeCashFlowsList } from '../../../utils/hooks/useCashFlowsList';
+import { toggleMenu } from '../../actions/actionsApp';
+import { usePageTitle } from '../../selectors/selectorsApp';
 
 const AppCoverController = ({
   children
 }) => {
-  useEffect(() => () => {
-    unsubscribePeopleList();
-    unsubscribeAccountsList();
-    unsubscribeCashFlowDescriptionsList();
-    unsubscribeCashFlowsList();
-  }, []);
-  const [{ pageTitle }, , unlinkState] = useAppState();
-  useEffect(() => unlinkState);
+  const dispatch = useDispatch();
+  const pageTitle = usePageTitle();
 
-  const title = `Cash Flow${pageTitle ? ` - ${pageTitle}` : ''}`;
+  const title = pageTitle || 'Cash Flow';
   return (
     <AppCoverView
-      openMenu={toggleMenu}
+      openMenu={() => dispatch(toggleMenu())}
       title={title}
     >
       {children}

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Paper } from 'react-md';
 import AppBar from '../AppBar';
 import MenuDrawer from '../MenuDrawer';
 import MenuButton from './MenuButton';
@@ -10,18 +9,18 @@ const AppCoverView = ({
   openMenu,
   children
 }) => (
-  <Paper>
+  <div className="cf-paper">
     <AppBar
       title={title}
-      nav={<MenuButton onClick={openMenu} />}
+      nav={(<MenuButton onClick={openMenu} />)}
     />
-    <Paper>
-      <Paper style={{ marginTop: '80px' }}>
+    <div className="cf-paper">
+      <div className="cf-paper" style={{ marginTop: '80px' }}>
         {children}
-      </Paper>
+      </div>
       <MenuDrawer />
-    </Paper>
-  </Paper>
+    </div>
+  </div>
 );
 
 AppCoverView.propTypes = {
